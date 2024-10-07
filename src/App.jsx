@@ -20,6 +20,9 @@ function App() {
     };
     fetchData();
   }, []);
+  if (data.length === 0) {
+    return <p>no data found</p>;
+  }
   return (
     <>
       <h1 className="text-3xl font-bold text-center">Midterm 2</h1>
