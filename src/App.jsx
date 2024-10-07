@@ -3,6 +3,7 @@ import axios from "axios";
 
 function App() {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -14,12 +15,17 @@ function App() {
           (human) => human.dob.age >= 50
         );
         setData(filterData);
+        setLoading(false);
       } catch (error) {
         console.error(error);
       }
     };
     fetchData();
   }, []);
+
+  if (loading) {
+    return <p>Loading</p>;
+  }
   if (data.length === 0) {
     return <p>no data found</p>;
   }
